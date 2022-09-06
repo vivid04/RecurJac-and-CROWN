@@ -140,6 +140,7 @@ if __name__ == "__main__":
         raise(RuntimeError("cannot find model file"))
     # load Keras model
     weight_dims, activation, activation_param, input_dim = get_model_meta(modelfile)
+    print(f'input dim={input_dim}')
     numlayer = len(weight_dims)
     if args.dataset == "auto":
         if input_dim[2] == 28 or input_dim[2] == "28":

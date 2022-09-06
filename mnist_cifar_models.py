@@ -73,7 +73,9 @@ def get_model_meta_real(filename, model_loader):
         # for tensorflow.keras
         model_layers = model_meta['config']
     for i, layer in enumerate(model_layers):
-        if i ==0 and layer['class_name'] == "Flatten":
+        #if i ==0 and layer['class_name'] == "Flatten":
+        if i ==0 or layer['class_name'] == "Flatten":
+
             input_dim = layer['config']['batch_input_shape']
         if layer['class_name'] == "Dense":
             units = layer['config']['units']

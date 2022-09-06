@@ -16,3 +16,7 @@ cifar-10-batches-bin/
 *.mat
 *.zip
 
+models_recurjac.tar
+models_relu_verification.tar
+.vscode/launch.json
+.gitignore
