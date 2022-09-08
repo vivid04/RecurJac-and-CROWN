@@ -110,7 +110,7 @@ class NLayerModel:
             from tensorflow.keras.models import load_model
             from tensorflow.keras import regularizers
             from tensorflow.keras import backend as K
-        
+            
         self.image_size = image_size
         self.num_channels = image_channel
         self.num_labels = 10
@@ -152,8 +152,8 @@ class NLayerModel:
 
         # a tensor to get gradients
         self.gradients = []
-        for i in range(model.output.shape[1]):
-            output_tensor = model.output[:,i]
+            for i in range(model.output.shape[1]):
+                output_tensor = model.output[:,i]
             self.gradients.append(K.gradients(output_tensor, model.input)[0])
 
         self.layer_outputs = layer_outputs
@@ -165,7 +165,7 @@ class NLayerModel:
     
     def get_gradient(self, data, sess = None):
         if sess is None:
-            sess = K.get_session()
+           sess = K.get_session()
         # initialize all un initialized variables
         # sess.run(tf.variables_initializer([v for v in tf.global_variables() if v.name.split(':')[0] in set(sess.run(tf.report_uninitialized_variables()))]))
         evaluated_gradients = []

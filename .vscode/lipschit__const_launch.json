@@ -1,0 +1,19 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    //Using the following command, we run RecurJac on 1 correctly classified image from class 1, using the model file models/mnist_7layer_relu_1024. We use CROWN-adaptive to compute layer-wise outer bounds and use RecurJac to compute the Jacobian bounds. The input is perturb in a L_inf ball. We evaluate 20 eps values, starting from 10e-3=0.001 to 10e0=1.0, in a logarithmic scale.
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args":["--task","lipschitz","--numimage","1","--targettype","1","--modelfile","models/mnist_7layer_relu_1024","--layerbndalg","crown-adaptive","--jacbndalg","recurjac","--norm","i","--lipsteps","20","--liplogstart","-3","--liplogend","0"
+        ]
+        }
+    ]
+}

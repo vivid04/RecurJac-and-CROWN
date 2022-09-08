@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": "true",
+            "args": [
+                "--task", "robustness",
+                "--numimage", "10" ,
+                "--targettype", "random",
+                 "--norm", "i", 
+                 "--modelfile", "models/mnist_3layer_relu_1024_adv_retrain", 
+                 "--layerbndalg", "crown-adaptive",
+                  "--jacbndalg", "recurjac",
+                   "--eps", "0.2"]
+                   //0.2-->0.0000
+
+        }
+    ]
+}
