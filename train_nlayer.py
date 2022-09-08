@@ -19,11 +19,11 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.keras.layers import LeakyReLU
 from tensorflow.keras.models import load_model
 from tensorflow.keras.callbacks import ModelCheckpoint
-from tensorflow.keras import backend as K
+import tensorflow.compat.v1.keras.backend  as K #from tensorflow.keras import backend as K
 from tensorflow.keras.optimizers import SGD, Adam
-config = tf.ConfigProto()
+config = tf.compat.v1.ConfigProto()#config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
-K.set_session(tf.Session(config=config))
+K.set_session(tf.compat.v1.Session(config=config))#tf.Session(config=config)
 
 import tensorflow as tf
 from setup_mnist import MNIST
