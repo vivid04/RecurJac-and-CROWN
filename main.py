@@ -15,7 +15,9 @@ import sys
 import random
 import argparse
 import time
-import tensorflow as tf
+#import tensorflow as tf
+import tensorflow
+import tensorflow.compat.v1 as tf
 import numpy as np
 
 from setup_mnist import MNIST
