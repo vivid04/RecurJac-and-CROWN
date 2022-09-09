@@ -11,14 +11,16 @@
 ##
 
 
+from fileinput import filename
 import numpy as np
 #change all tensorflow to tensorflow.compat.v1
+import tensorflow
 import tensorflow.compat.v1 as tf
-from tensorflow.compat.v1.keras.models import Sequential
-from tensorflow.compat.v1.keras.layers import Dense, Dropout, Activation, Flatten, Lambda
-from tensorflow.compat.v1.keras.layers import Conv2D, MaxPooling2D
-from tensorflow.compat.v1.keras.layers import LeakyReLU
-from tensorflow.compat.v1.keras.models import load_model
+#from tensorflow.compat.v1.keras.models import Sequential
+#from tensorflow.compat.v1.keras.layers import Dense, Dropout, Activation, Flatten, Lambda
+#from tensorflow.compat.v1.keras.layers import Conv2D, MaxPooling2D
+#from tensorflow.compat.v1.keras.layers import LeakyReLU
+#from tensorflow.compat.v1.keras.models import load_model
 from tensorflow.compat.v1.keras.callbacks import ModelCheckpoint
 import tensorflow.compat.v1.keras.backend  as K #from tensorflow.keras import backend as K
 from tensorflow.compat.v1.keras.optimizers import SGD, Adam
@@ -26,7 +28,6 @@ config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
 K.set_session(tf.Session(config=config))
 
-import tensorflow.compat.v1 as tf
 from setup_mnist import MNIST
 from setup_cifar import CIFAR
 from mnist_cifar_models import NLayerModel
@@ -75,7 +76,8 @@ def train(data, file_name, params, num_epochs=50, batch_size=256, train_temp=1, 
               epochs=num_epochs,
               callbacks=[checkpoint],
               shuffle=True)
-    
+    filename = "test.h5"
+    model.save(filename)
     return {'model':model, 'history':history}
 
 if not os.path.isdir('models'):

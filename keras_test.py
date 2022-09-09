@@ -67,7 +67,9 @@ class VariationalAutoEncoder(layers.Layer):
 
 # Our model.
 vae = VariationalAutoEncoder(original_dim=784, intermediate_dim=64, latent_dim=32)
-
+import sys
+print("exit")
+sys.exit(0)
 # Loss and optimizer.
 loss_fn = tf.keras.losses.MeanSquaredError()
 optimizer = tf.keras.optimizers.Adam(learning_rate=1e-3)

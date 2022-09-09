@@ -38,7 +38,9 @@ if __name__ == "__main__":
     parser.add_argument('--modelpath', 
                 default="models_training",
                 help='folder for saving trained models')
-     
+    parser.add_argument('layer_parameters',
+                nargs='+',
+                help='number of hidden units per layer')   
     parser.add_argument('--activation',
                 default="relu",
                 choices=["relu", "tanh", "sigmoid", "arctan", "elu", "hard_sigmoid", "softplus", "leaky"])
@@ -54,7 +56,7 @@ if __name__ == "__main__":
                 type=float,
                 help='weight decay')
     parser.add_argument('--epochs',
-                default=50,
+                default=2,
                 type=int,
                 help='number of epochs')
     parser.add_argument('--dropout',

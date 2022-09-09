@@ -124,7 +124,8 @@ class NLayerModel:
         self.num_labels = 10
 
         model = Sequential()
-        model.add(Flatten(input_shape=(image_size, image_size, image_channel)))
+        tm = Flatten(input_shape=(image_size, image_size, image_channel))
+        model.add(tm)
         # list of all hidden units weights
         self.U = []
         n = 0
@@ -164,10 +165,12 @@ class NLayerModel:
                     [model.layers[0].input], [layer.output]))
 
         # a tensor to get gradients
+        #tf.disable_eager_execution()
+        import tensorflow
         self.gradients = []
         for i in range(model.output.shape[1]):
             output_tensor = model.output[:, i]
-            self.gradients.append(K.gradients(output_tensor, model.input)[0])
+            self.gradients.append(tensorflow.keras.backend.gradients(output_tensor, model.input)[0])
 
         self.layer_outputs = layer_outputs
         self.model = model
